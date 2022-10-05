@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-deploy
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+
+    spec:
+      containers:
+        - name: flask-app-container
+          image: flasky3
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5001
+              protocol: TCP
+
+        
+        
